@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1E316D;
+  --color-accent: #EED278;
+  --color-secondary: #A1BEE6;
+  --color-light-gray: #F0F0F0;
+  --color-gray: #676767;
+  --color-text-gray: #4B4B4B;
+  --color-heart: #DC1F34;
+  --color-ad-revenue: #D5EEDD;
+  --color-ad-product: #FCF3D1;
+  --color-ad-order: #CEE7FE;
+  --color-ad-customer: #DADCDD;
+  --color-ad-revenue-text: #437A51;
+  --color-ad-product-text: #8E721C;
+  --color-ad-order-text: #195391;
+  --color-ad-customer-text: #313437;
+  --color-red: #C0392B;
+  --color-green: #27AE60;
+  --color-yellow: #eab308;
+  --color-blue: #3b82f6;
+
+  --spacing-w-config: 1280px;
+
+  --font-roboto: "Roboto", sans-serif;
+}
+
+html {
+    font-family: var(--font-roboto);
+}
