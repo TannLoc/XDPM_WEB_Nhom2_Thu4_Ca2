@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+
+import { Article, Banner } from "@/modules/layout";
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <>
+      <Banner />
+      <Article/>
+    </>
+  );
+};
 
-export default HomePage
+export default HomePage;
