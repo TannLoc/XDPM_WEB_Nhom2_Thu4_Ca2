@@ -1,7 +1,14 @@
 export { default as Article } from "./Article";
 export { default as Avatar } from "./Avatar";
 export { default as Banner } from "./Banner";
+export { default as Filter } from "./Filter";
+export { default as Breadcrum } from "./Breadcrum";
+export { default as ProductItem } from "./Card/Product";
 export { default as Footer } from "./Footer";
 export { default as HeaderClient } from "./Header/HeaderClient";
 export { default as Navigation } from "./Navigation";
+export { default as PaginationClient } from "./Pagination/PaginationClient";
+export { default as ProductImageSlider } from "./Slider/ProductImageSlider";
+export { default as RelatedProductsSlider } from "./Slider/RelatedProductsSlider";
+export { default as Sort } from "./Sort";
 export { default as Tab } from "./Tab";

@@ -5,8 +5,10 @@ import { Dropdown } from "antd";
 import Link from "next/link";
 
 import { GENERIC_PATH } from "@/constants";
+import { useGlobalState } from "@/store";
 
 const Menu = () => {
+  const { currentUser } = useGlobalState();
   const items: MenuProps["items"] = [
     {
       key: "1",
@@ -23,7 +25,7 @@ const Menu = () => {
   return (
     <Dropdown menu={{ items }} placement="bottom" arrow>
       <Image
-        src={"/images/avatar_default.jpg"}
+        src={currentUser.avatar.url || "/images/avatar_default.jpg"}
         alt="Logo"
         width={32}
         height={32}

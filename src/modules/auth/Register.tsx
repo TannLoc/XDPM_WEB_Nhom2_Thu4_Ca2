@@ -6,11 +6,13 @@ import { message } from "antd";
 import { T_REGISTER_CUSTOMER } from "@/types";
 import { authCustomer } from "@/services/authServices";
 import { ERROR, GENERIC_PATH, INFO, SUCCESS, WARNING } from "@/constants";
+import { useGlobalState } from "@/store";
 
 const Register = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<T_REGISTER_CUSTOMER>();
   const [messageApi, contextHolder] = message.useMessage();
+  const { getUser } = useGlobalState();
 
   const validateEmail = (email: string) => {
     return String(email)
@@ -61,7 +63,8 @@ const Register = () => {
           content: SUCCESS.REGISTER,
           duration: 1,
         })
-        .then(() => {
+        .then(async () => {
+          await getUser();
           message.loading(INFO.IS_REDIRECTING);
           router.push(GENERIC_PATH.HOME);
         });
