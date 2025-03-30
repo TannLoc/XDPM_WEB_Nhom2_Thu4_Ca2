@@ -16,7 +16,7 @@ mainApi.interceptors.request.use(
 
 mainApi.interceptors.response.use(
   function (response) {
-    return response.data;
+    return response;
   },
   async function (error) {
     return Promise.reject(error);

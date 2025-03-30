@@ -8,9 +8,11 @@ import { GENERIC_PATH } from "@/constants";
 import Menu from "../Menu";
 import { SidebarClient } from "../Sidebar";
 import Search from "../Search";
+import { useGlobalState } from "@/store";
 
 const Header = () => {
   const [isSidebarCartOpen, setIsSidebarCartOpen] = useState<boolean>(false);
+  const { currentUser, cart } = useGlobalState();
 
   return (
     <header className="sticky top-0 z-50 flex justify-center items-center h-[60px] bg-primary">
@@ -27,14 +29,14 @@ const Header = () => {
         </div>
         <div className="flex gap-4">
           <Search />
-          <Badge size="small" count={0}>
+          <Badge size="small" count={cart.length}>
             <Tooltip title="View cart">
               <button onClick={() => setIsSidebarCartOpen(true)}>
                 <i className="text-2xl text-white bi bi-bag"></i>
               </button>
             </Tooltip>
           </Badge>
-          {true ? (
+          {currentUser ? (
             <Menu></Menu>
           ) : (
             <Button>

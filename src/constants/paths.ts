@@ -11,4 +11,9 @@ export enum GENERIC_PATH {
   WARRANTY_POLICY = "warranty-policy",
   RETURN_POLICY = "return-policy",
   PAYMENT_AND_DELIVERY_METHODS = "payment-and-delivery-methods",
+  BRAND = "/brand",
+  CART = "/cart",
+  USER = "/user",
+  ORDER = "/order",
+  PICKLIST = "/picklist",
 }
