@@ -12,8 +12,8 @@ const PersonalInformation = () => {
   const { currentUser } = useGlobalState();
 
   const toggleActiveEditForm = () => {
-    setIsActiveForm(prevState => !prevState);
-  }
+    setIsActiveForm((prevState) => !prevState);
+  };
 
   return (
     <div>
