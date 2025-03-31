@@ -13,7 +13,7 @@ const EditInfoForm = () => {
   const [form] = Form.useForm();
   const { getUser } = useGlobalState();
 
-   const handleEditProfile = async (values: T_USER_REQUEST) => {
+  const handleEditProfile = async (values: T_USER_REQUEST) => {
     const avatar = await uploadImage(fileList[0] || null);
     const data = {
       avatarId: avatar ? avatar.id : null,
@@ -22,18 +22,18 @@ const EditInfoForm = () => {
       phoneNumber: values?.phoneNumber,
       birthday: new Date(values.birthday!),
     };
-     try {
-       const res = await userServices.editUser(data);
-       if (res) {
-         message.success(SUCCESS.EDIT);
-         form.resetFields();
-         setFileList([]);
-         await getUser();
-       }
-     } catch (error) {
-       throw error;
-     }
-   };
+    try {
+      const res = await userServices.editUser(data);
+      if (res) {
+        message.success(SUCCESS.EDIT);
+        form.resetFields();
+        setFileList([]);
+        await getUser();
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
 
   return (
     <div className="w-1/2">

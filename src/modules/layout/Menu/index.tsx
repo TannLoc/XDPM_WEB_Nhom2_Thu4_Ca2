@@ -25,7 +25,7 @@ const Menu = () => {
   return (
     <Dropdown menu={{ items }} placement="bottom" arrow>
       <Image
-        src={currentUser.avatar.url || "/images/avatar_default.jpg"}
+        src={currentUser.avatar?.url || "/images/avatar_default.jpg"}
         alt="Logo"
         width={32}
         height={32}

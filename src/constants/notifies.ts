@@ -7,6 +7,8 @@ export enum SUCCESS {
   DELETE = "Deleted successfully",
   REMOVE = "Removed successfully",
   THUMBNAIL = "Thumbnail setup successful",
+  ORDER_COMPLETE = "Order successful, thank you very much",
+  SET_STATE = "Set state successfully",
 }
 
 export enum ERROR {
