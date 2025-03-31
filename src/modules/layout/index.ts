@@ -12,3 +12,4 @@ export { default as ProductImageSlider } from "./Slider/ProductImageSlider";
 export { default as RelatedProductsSlider } from "./Slider/RelatedProductsSlider";
 export { default as Sort } from "./Sort";
 export { default as Tab } from "./Tab";
+export { default as UploadImage } from "./UploadImage";

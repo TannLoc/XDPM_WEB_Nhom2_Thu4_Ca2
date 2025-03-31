@@ -6,6 +6,7 @@ export enum SUCCESS {
   EDIT = "Edited successfully",
   DELETE = "Deleted successfully",
   REMOVE = "Removed successfully",
+  THUMBNAIL = "Thumbnail setup successful",
 }
 
 export enum ERROR {

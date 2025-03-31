@@ -1,5 +1,4 @@
-import { OrderClient } from "@/modules/order";
-import PersonalInformation from "@/modules/personal-info";
+import { OrderHistory, PersonalInformation } from "@/modules/profile";
 
 export const TAB_ITEMS = [
   {
@@ -10,6 +9,6 @@ export const TAB_ITEMS = [
   {
     key: "order",
     label: "Order",
-    children: OrderClient,
+    children: OrderHistory,
   },
 ];

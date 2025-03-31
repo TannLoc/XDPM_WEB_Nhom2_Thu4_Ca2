@@ -11,9 +11,9 @@ export type T_USER_RESPONSE = {
 };
 
 export type T_USER_REQUEST = {
-  avatarId: number;
-  birthday: Date;
-  email: string;
-  phoneNumber: string;
-  fullName: string;
+  avatarId?: number;
+  birthday?: Date;
+  email?: string;
+  phoneNumber?: string;
+  fullName?: string;
 };

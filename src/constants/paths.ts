@@ -16,4 +16,5 @@ export enum GENERIC_PATH {
   USER = "/user",
   ORDER = "/order",
   PICKLIST = "/picklist",
+  UPLOAD = "/upload",
 }
