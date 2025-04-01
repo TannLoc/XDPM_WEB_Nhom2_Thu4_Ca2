@@ -5,10 +5,10 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 import { GENERIC_PATH } from "@/constants";
-import Menu from "../Menu";
-import { SidebarClient } from "../Sidebar";
+import Menu from "../Menu/MenuClient";
 import Search from "../Search";
 import { useGlobalState } from "@/store";
+import SidebarClient from "../Sidebar/SiderbarClient";
 
 const Header = () => {
   const [isSidebarCartOpen, setIsSidebarCartOpen] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const Header = () => {
             <Menu></Menu>
           ) : (
             <Button>
-              <Link href={GENERIC_PATH.LOGIN} className="text-white">
+              <Link href={GENERIC_PATH.AUTH} className="text-white">
                 Login
               </Link>
             </Button>

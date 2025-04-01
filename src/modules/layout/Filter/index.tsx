@@ -12,9 +12,9 @@ import {
 import { useEffect, useState } from "react";
 
 import { T_PICKLIST_OPTIONS_CLIENT, T_PRODUCT_PARAMS } from "@/types";
-import { defaultProductParams, PICKLIST } from "@/constants";
-import { brandClientServices, pickListServices } from "@/services";
+import { defaultProductParams } from "@/constants";
 import { useGlobalState } from "@/store";
+import { handleGetBrandCustomer, handleGetFeature, handleGetGender, handleGetMarketSegment, handleGetMovement, handleGetSize } from "@/utils";
 
 type Props = {
   filterProductOpen: boolean;
@@ -28,40 +28,6 @@ const Filter = (props: Props) => {
 
   const [picklistOptions, setpicklistOptions] =
     useState<T_PICKLIST_OPTIONS_CLIENT>();
-
-  console.log(picklistOptions);
-
-  const handleGetBrandCustomer = async () => {
-    const res = await brandClientServices.getAll();
-    if (res) return res.data.response;
-  };
-
-  const handleGetGender = async () => {
-    const res = await pickListServices.getPickList(PICKLIST.PRODUCT_GENDER);
-    if (res) return res.data.response;
-  };
-
-  const handleGetSize = async () => {
-    const res = await pickListServices.getPickList(PICKLIST.PRODUCT_SIZE);
-    if (res) return res.data.response;
-  };
-
-  const handleGetFeature = async () => {
-    const res = await pickListServices.getPickList(PICKLIST.PRODUCT_FEATURE);
-    if (res) return res.data.response;
-  };
-
-  const handleGetMovement = async () => {
-    const res = await pickListServices.getPickList(PICKLIST.PRODUCT_MOVENMENT);
-    if (res) return res.data.response;
-  };
-
-  const handleGetMarketSegment = async () => {
-    const res = await pickListServices.getPickList(
-      PICKLIST.PRODUCT_MARKET_SEGMENT
-    );
-    if (res) return res.data.response;
-  };
 
   const fetchDataPicklistOptions = async () => {
     const [brands, gender, marketSegment, movement, size, feature] =

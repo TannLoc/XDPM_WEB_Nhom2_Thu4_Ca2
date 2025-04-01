@@ -38,13 +38,13 @@ const RelatedProductsSlider = (props: Props) => {
         <>
           <div className="absolute z-50 flex justify-between w-full translate-y-[-50%] translate-x-[-50%] top-1/2 left-1/2">
             <button
-              className="p-3 text-4xl text-text-gray-color hover:text-black "
+              className="p-3 text-4xl text-text-gray hover:text-black "
               onClick={handlePrev}
             >
               <i className="bi bi-chevron-compact-left"></i>
             </button>
             <button
-              className="p-3 text-4xl text-text-gray-color hover:text-black "
+              className="p-3 text-4xl text-text-gray hover:text-black "
               onClick={handleNext}
             >
               <i className="bi bi-chevron-compact-right"></i>

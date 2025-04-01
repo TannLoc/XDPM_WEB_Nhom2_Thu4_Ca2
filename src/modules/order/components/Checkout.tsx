@@ -45,14 +45,14 @@ const Checkout = (props: Props) => {
       <div className="flex-1 p-6 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold">Delivery information</h2>
         <div className="mt-5">
-          <p className="text-lg text-text-gray-color">
+          <p className="text-lg text-text-gray">
             <span className="font-semibold">Full name:</span>{" "}
             {currentUser.fullName}
           </p>
-          <p className="mt-2 text-lg text-text-gray-color">
+          <p className="mt-2 text-lg text-text-gray">
             <span className="font-semibold">Email:</span> {currentUser.email}
           </p>
-          <p className="mt-2 text-lg text-text-gray-color">
+          <p className="mt-2 text-lg text-text-gray">
             <span className="font-semibold">Phone number:</span>{" "}
             {currentUser.phoneNumber}
           </p>
@@ -61,7 +61,7 @@ const Checkout = (props: Props) => {
       </div>
       <div className="w-[400px] bg-gray-50 p-4">
         <h2 className="text-2xl font-semibold">Order summary</h2>
-        <div className="py-4 mt-5 border-gray-color border-y">
+        <div className="py-4 mt-5 border-gray border-y">
           <div className="flex justify-between">
             <p>Items:</p>
             <p className="font-semibold">{quantityItems}</p>

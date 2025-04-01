@@ -7,3 +7,8 @@ export type T_BRAND_RESPONE = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export type T_BRAND_REQUEST = {
+  name?: string;
+  imageId?: number | null;
+};

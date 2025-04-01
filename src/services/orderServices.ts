@@ -16,8 +16,20 @@ export const orderClientServices = {
 };
 
 export const orderAdminServices = {
+  getAll: (params?: T_PAGINATION) =>
+    mainApi.get(`${GENERIC_PATH.MANAGEMENT}${GENERIC_PATH.ORDER}`, {
+      params: {
+        page: params?.page,
+        pageSize: params?.pageSize,
+      },
+    }),
   editOne: (id: number, data: T_ORDER_ADDRESS) =>
     mainApi.put(`${GENERIC_PATH.MANAGEMENT}${GENERIC_PATH.ORDER}/${id}`, data),
   getOne: (id: number) =>
     mainApi.get(`${GENERIC_PATH.MANAGEMENT}${GENERIC_PATH.ORDER}/${id}`),
+  updateState: (id: number, data: T_ORDER_STATE) =>
+    mainApi.put(
+      `${GENERIC_PATH.MANAGEMENT}${GENERIC_PATH.ORDER}/${id}/action`,
+      data
+    ),
 };

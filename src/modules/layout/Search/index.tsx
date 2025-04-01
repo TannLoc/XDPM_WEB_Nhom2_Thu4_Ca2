@@ -48,7 +48,7 @@ const Search = () => {
       tabIndex={-1}
     >
       <Input
-        prefix={<i className="bi bi-search text-gray-color"></i>}
+        prefix={<i className="bi bi-search text-gray"></i>}
         placeholder="Search"
         value={keyword}
         onChange={handleInputChange}

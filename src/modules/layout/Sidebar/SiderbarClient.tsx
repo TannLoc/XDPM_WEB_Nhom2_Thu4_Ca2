@@ -10,7 +10,7 @@ type Props = {
   setIsSidebarCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const SidebarCart = (props: Props) => {
+const SidebarClient = (props: Props) => {
   const { isSidebarCartOpen, setIsSidebarCartOpen } = props;
   const { cart } = useGlobalState();
   const cartLength = cart.length > 0;
@@ -37,7 +37,7 @@ const SidebarCart = (props: Props) => {
       )}
       <Link
         href={GENERIC_PATH.ORDER}
-        className={`block w-full py-2 text-lg text-center text-white bg-primary hover:opacity-[0.8] hover:text-white ${
+        className={`block w-full py-2 text-lg text-center !text-white !bg-primary hover:opacity-[0.8] ${
           !cartLength ? "opacity-[0.8]" : ""
         }`}
       >
@@ -47,4 +47,4 @@ const SidebarCart = (props: Props) => {
   );
 };
 
-export default SidebarCart;
+export default SidebarClient;

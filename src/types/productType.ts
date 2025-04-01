@@ -2,6 +2,21 @@ import { T_BRAND_RESPONE } from "./brandType";
 import { T_IMAGE } from "./imageType";
 import { T_PICKLIST_RESPONSE } from "./picklistType";
 
+export type T_PRODUCT_REQUEST = {
+  name: string;
+  code: string;
+  price: number;
+  salesPrice: number;
+  featureIds: number[];
+  movementId: number;
+  brandId: number;
+  marketSegmentId: number;
+  sizeId: number;
+  genderId: number;
+  imageId: number | null;
+  imageIds?: number[];
+};
+
 export type T_PRODUCT_RESPONSE = {
   key?: number;
   id: number;

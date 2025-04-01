@@ -1,5 +1,6 @@
 import "@/assets/style/globals.css";
 import { Provider } from "@/store";
+import ProtectedRoute from "@/utils/ProtectedRoute";
 
 export default function RootLayout({
   children,
@@ -8,7 +9,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body><Provider>{children}</Provider></body>
+      <body>
+        <Provider>
+           <ProtectedRoute>
+          {children}
+           </ProtectedRoute>
+        </Provider>
+      </body>
     </html>
   );
 }

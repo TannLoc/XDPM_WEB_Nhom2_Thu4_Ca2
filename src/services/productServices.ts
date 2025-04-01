@@ -1,5 +1,5 @@
 import { GENERIC_PATH } from "@/constants";
-import { T_PRODUCT_PARAMS } from "@/types";
+import { T_PAGINATION, T_PRODUCT_PARAMS, T_PRODUCT_REQUEST } from "@/types";
 import { mainApi } from "@/utils";
 
 export const productClientService = {
@@ -27,4 +27,20 @@ export const productClientService = {
     mainApi.get(`${GENERIC_PATH.PRODUCT}`, {
       params: { brandId: id },
     }),
+};
+
+export const productAdminService = {
+  getAll: (params?: T_PAGINATION) =>
+    mainApi.get(`${GENERIC_PATH.MANAGEMENT}${GENERIC_PATH.PRODUCT}`, {
+      params: {
+        page: params?.page,
+        pageSize: params?.pageSize,
+      },
+    }),
+  getOne: (id: number) =>
+    mainApi.get(`${GENERIC_PATH.MANAGEMENT}${GENERIC_PATH.PRODUCT}/${id}`),
+  create: (data: T_PRODUCT_REQUEST) =>
+    mainApi.post(`${GENERIC_PATH.MANAGEMENT}${GENERIC_PATH.PRODUCT}`, data),
+  edit: (id: number, data: T_PRODUCT_REQUEST) =>
+    mainApi.put(`${GENERIC_PATH.MANAGEMENT}${GENERIC_PATH.PRODUCT}/${id}`, data),
 };

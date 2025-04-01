@@ -53,13 +53,13 @@ function ProductImageSlider(props: Props) {
           <div className="relative">
             <div className="absolute z-50 flex justify-between w-[90%] translate-y-[-50%] translate-x-[-50%] top-1/2 left-1/2">
               <button
-                className="p-3 text-4xl text-light-gray-color hover:text-text-gray-color "
+                className="p-3 text-4xl text-light-gray hover:text-text-gray "
                 onClick={handlePrev}
               >
                 <i className="bi bi-chevron-compact-left"></i>
               </button>
               <button
-                className="p-3 text-4xl text-light-gray-color hover:text-text-gray-color "
+                className="p-3 text-4xl text-light-gray hover:text-text-gray "
                 onClick={handleNext}
               >
                 <i className="bi bi-chevron-compact-right"></i>

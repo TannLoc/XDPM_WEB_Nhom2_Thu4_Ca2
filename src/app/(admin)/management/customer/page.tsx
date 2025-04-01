@@ -1,8 +1,12 @@
+import CustomerTable from '@/modules/customer'
 import React from 'react'
 
 const CustomerPage = () => {
   return (
-    <div>CustomerPage</div>
+    <section>
+      <h1 className="text-5xl my-5">Customer</h1>
+      <CustomerTable></CustomerTable>
+    </section>
   )
 }
 

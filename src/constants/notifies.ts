@@ -9,6 +9,7 @@ export enum SUCCESS {
   THUMBNAIL = "Thumbnail setup successful",
   ORDER_COMPLETE = "Order successful, thank you very much",
   SET_STATE = "Set state successfully",
+  ADD_ITEM_PICKLIST = "Item has been added",
 }
 
 export enum ERROR {
@@ -18,6 +19,8 @@ export enum ERROR {
   PHONE_NUMBER = "Phone number must be 10 characters long",
   PASSWORD = "Password must be at least 6 characters",
   RE_ENTER_PASSWORD = "Invalid password re-entered",
+  ADD_ITEM_PICKLIST = "Add item failed",
+  THUMBNAIL_IS_NULL = "Please select thumbnail",
 }
 
 export enum WARNING {

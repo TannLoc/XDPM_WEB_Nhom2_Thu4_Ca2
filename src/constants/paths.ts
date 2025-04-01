@@ -3,6 +3,7 @@ export enum GENERIC_PATH {
   AUTH = "/auth",
   LOGIN = "/login",
   REGISTER = "/register",
+  LOGOUT = "/logout",
   HOME = "/",
   PRODUCT = "/product",
   PROFILE = "/profile",
@@ -17,4 +18,8 @@ export enum GENERIC_PATH {
   ORDER = "/order",
   PICKLIST = "/picklist",
   UPLOAD = "/upload",
+  REFRESH_TOKEN = "/refresh-token",
+  CUSTOMER = "/customer",
+  SHIPMENT = "/shipment",
+  DASHBOARD = "/dashboard",
 }

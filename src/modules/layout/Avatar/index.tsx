@@ -6,7 +6,7 @@ const Avatar = () => {
   const { currentUser } = useGlobalState();
 
   return (
-    <section className="flex flex-col items-center gap-5 pt-10 pb-5 bg-white border-b border-primary-color">
+    <section className="flex flex-col items-center gap-5 pt-10 pb-5 bg-white border-b border-primary">
       <Image
         src={currentUser?.avatar?.url || "/images/avatar_default.jpg"}
         alt="Avatar"

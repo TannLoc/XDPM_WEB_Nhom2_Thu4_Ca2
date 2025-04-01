@@ -31,11 +31,11 @@ const SearchItem = (props: Props) => {
         <p className="text-lg font-semibold">${product.salesPrice}</p>
       </div>
       {product.stock > 0 ? (
-        <p className="absolute text-sm bottom-2 right-4 text-green-color">
+        <p className="absolute text-sm bottom-2 right-4 text-green">
           In stock
         </p>
       ) : (
-        <p className="absolute text-sm bottom-2 right-4 text-red-color">
+        <p className="absolute text-sm bottom-2 right-4 text-red">
           Out of stock
         </p>
       )}
