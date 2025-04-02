@@ -60,7 +60,7 @@ const ProductEdit = (props: Props) => {
 
   return (
     <Modal
-      title="Edit brand"
+      title="Edit product"
       open={isModalEditOpen}
       onCancel={handleCancel}
       footer={null}

@@ -14,7 +14,7 @@ type Props = {
 
 const CartItem = (props: Props) => {
   const { product } = props;
-  const { cart, getDataCart } = useGlobalState();
+  const { cart, getCart } = useGlobalState();
 
   const handleRemoveProductInCart = async (productId: number) => {
     const cartItem = cart.find(
@@ -24,7 +24,7 @@ const CartItem = (props: Props) => {
       const res = await cartServices.deleteOne(cartItem.id);
       if (res) {
         message.success(SUCCESS.REMOVE);
-        getDataCart();
+        getCart();
       }
     } catch (error) {
       throw error;

@@ -32,7 +32,12 @@ const MenuAdmin = () => {
 
   return (
     <Dropdown menu={{ items }} placement="bottomRight">
-      <Image src={"/images/avatar.png"} alt="Logo" width={40} height={40} />
+      <Image
+        src={"/images/avatar_default.png"}
+        alt="Logo"
+        width={40}
+        height={40}
+      />
     </Dropdown>
   );
 };
