@@ -4,8 +4,12 @@ export type T_LOGIN_ADMIN = {
 };
 
 export type T_LOGIN_CUSTOMER = {
-  phoneNumber: string;
+  identifier: string;
   password: string;
+};
+
+export type T_LOGIN_GOOGLE = {
+  credential: string;
 };
 
 export type T_REGISTER_CUSTOMER = {

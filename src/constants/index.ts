@@ -1,4 +1,5 @@
 export * from "./defaultParams";
+export * from "./environments";
 export * from "./errorCode";
 export * from "./navigation";
 export * from "./notifies";

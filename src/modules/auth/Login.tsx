@@ -7,6 +7,7 @@ import { T_LOGIN_CUSTOMER } from "@/types";
 import { authCustomer } from "@/services/authServices";
 import { ERROR, GENERIC_PATH, INFO, SUCCESS, WARNING } from "@/constants";
 import { useGlobalState } from "@/store";
+import LoginGoogle from "./LoginGoogle";
 
 const Login = () => {
   const router = useRouter();
@@ -15,17 +16,13 @@ const Login = () => {
   const { getUser } = useGlobalState();
 
   const handleSubmitLogin: SubmitHandler<T_LOGIN_CUSTOMER> = async (data) => {
-    if (data.phoneNumber === "" || data.password === "") {
+    if (data.identifier === "" || data.password === "") {
       message.warning(WARNING.FIELD_IS_NOT_NULL);
-      return;
-    } else if (data.phoneNumber!.length > 10 || data.phoneNumber!.length < 10) {
-      message.error(ERROR.PHONE_NUMBER);
       return;
     } else if (data.password!.length < 6) {
       message.error(ERROR.PASSWORD);
       return;
     }
-
     const res = await authCustomer.login(data);
     if (res) {
       messageApi
@@ -54,8 +51,8 @@ const Login = () => {
             <input
               type="text"
               className="flex-1 p-2 text-lg bg-transparent border-l text-primary focus:outline-none border-primary"
-              placeholder="Phone number"
-              {...register("phoneNumber")}
+              placeholder="Email or Phone number"
+              {...register("identifier")}
             />
           </div>
 
@@ -78,6 +75,10 @@ const Login = () => {
             </button>
           </div>
         </form>
+        <div className="mt-5">
+          <p className="text-center text-gray mb-5">or</p>
+          <LoginGoogle></LoginGoogle>
+        </div>
       </div>
     </>
   );
