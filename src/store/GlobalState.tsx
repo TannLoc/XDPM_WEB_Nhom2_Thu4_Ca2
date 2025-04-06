@@ -60,7 +60,7 @@ export const GlobalStateProvider = ({
   }, []);
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && currentUser.role === "CUSTOMER") {
       getCart();
     }
   }, [currentUser]);

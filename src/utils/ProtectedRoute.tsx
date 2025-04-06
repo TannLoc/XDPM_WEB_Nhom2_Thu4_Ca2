@@ -10,7 +10,11 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { currentUser } = useGlobalState();
 
   useEffect(() => {
-    if (currentUser !== null && path.includes(GENERIC_PATH.MANAGEMENT)) {
+    if (
+      currentUser !== null &&
+      currentUser.role === 'CUSTOMER' &&
+      path.includes(GENERIC_PATH.MANAGEMENT)
+    ) {
       router.replace("/not-found");
     }
   }, [path, currentUser]);

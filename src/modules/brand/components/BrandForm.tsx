@@ -44,8 +44,6 @@ const BrandForm = (props: Props) => {
           if (fileList !== null && logo?.uid === fileList[0]?.uid) {
             data = { name: values.name };
           } else {
-            console.log("nhay vo day");
-
             image = await uploadImage(fileList[0] || null);
             data = { name: values.name, imageId: image?.id };
           }

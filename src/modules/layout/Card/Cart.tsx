@@ -51,7 +51,7 @@ const CartItem = (props: Props) => {
       </div>
       <div>
         <p>{product.name}</p>
-        <p className="text-lg font-semibold">${product.salesPrice}</p>
+        <p className="text-lg font-semibold">{product.salesPrice} VND</p>
       </div>
     </div>
   );

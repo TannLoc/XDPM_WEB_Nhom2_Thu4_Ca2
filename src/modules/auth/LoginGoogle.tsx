@@ -39,7 +39,7 @@ const LoginGoogle = () => {
       <GoogleLogin
         onSuccess={handleLogin}
         onError={() => {
-          console.log("Login Failed");
+          alert("Login failed");
         }}
       />
     </>

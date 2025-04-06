@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { MenuProps } from "antd";
 import { useRouter } from "next/navigation";
 import { Dropdown, message } from "antd";
+import Cookies from "js-cookie";
 
 import { authAdmin } from "@/services";
 import { GENERIC_PATH } from "@/constants";
@@ -14,6 +15,7 @@ const MenuAdmin = () => {
     try {
       const res = await authAdmin.logout();
       if (res) {
+        Cookies.remove("customer");
         router.push(`${GENERIC_PATH.MANAGEMENT}${GENERIC_PATH.LOGIN}`);
       } else {
         message.error("Logout failed");
@@ -33,7 +35,7 @@ const MenuAdmin = () => {
   return (
     <Dropdown menu={{ items }} placement="bottomRight">
       <Image
-        src={"/images/avatar_default.png"}
+        src={"/images/avatar_default.jpg"}
         alt="Logo"
         width={40}
         height={40}

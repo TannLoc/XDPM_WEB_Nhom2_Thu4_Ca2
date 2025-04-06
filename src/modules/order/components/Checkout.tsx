@@ -1,11 +1,12 @@
 "use client";
-import { Form, message, Radio } from "antd";
+import { Form, Radio, RadioChangeEvent } from "antd";
 
 import { orderClientServices } from "@/services";
 import { T_CART_RESPONSE } from "@/types";
-import { SUCCESS } from "@/constants";
 import { useGlobalState } from "@/store";
 import OrderForm from "./OrderForm";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type Props = {
   nextStep: () => void;
@@ -18,25 +19,34 @@ const Checkout = (props: Props) => {
   const { nextStep, total, quantityItems, itemsOrder } = props;
   const { currentUser, getCart } = useGlobalState();
   const [form] = Form.useForm();
+  const route = useRouter();
+  const [paymentType, setPaymentType] = useState("CASH");
+
+  const handleRadioChange = (e: RadioChangeEvent) => {
+    setPaymentType(e.target.value);
+  };
 
   const handleConfirm = async () => {
+    if (process.env.NODE_ENV === "production" && paymentType === "VNPAY") {
+      alert("Không thể sử dụng VNPay trong môi trường production");
+      return;
+    }
     await form.validateFields();
     const text = form.getFieldValue("text");
     const city = form.getFieldValue("city");
     const district = form.getFieldValue("district");
     const ward = form.getFieldValue("ward");
     const note = form.getFieldValue("note");
-    const delivery = { city, district, ward, text , note };
-    const cartIds = itemsOrder.map((item: T_CART_RESPONSE) =>
-      item.id
- );
-    const data = { cartIds, delivery };
+    const delivery = { city, district, ward, text, note };
+    const cartIds = itemsOrder.map((item: T_CART_RESPONSE) => item.id);
+    const data = { cartIds, delivery, paymentType };
     const res = await orderClientServices.create(data);
-    if (res && res.data.response) {
+    if (res && paymentType === "CASH") {
       getCart();
-      message.success(SUCCESS.ORDER_COMPLETE);
       form.resetFields();
       nextStep();
+    } else if (res && paymentType === "VNPAY") {
+      route.push(res.data.response.url);
     }
   };
 
@@ -78,7 +88,16 @@ const Checkout = (props: Props) => {
           </div>
         </div>
         <div className="mt-5">
-          <Radio checked>Cash on Delivery</Radio>
+          <Radio.Group
+            value={paymentType}
+            options={[
+              { value: "CASH", label: "CASH" },
+              { value: "VNPAY", label: "VNPAY" },
+            ]}
+            onChange={handleRadioChange}
+          >
+            Cash on Delivery
+          </Radio.Group>
         </div>
         <button
           className="w-full mt-4 py-2 text-lg text-center text-white bg-primary hover:opacity-[0.8] hover:text-white"

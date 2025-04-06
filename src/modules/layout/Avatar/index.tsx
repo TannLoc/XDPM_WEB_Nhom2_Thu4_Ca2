@@ -4,8 +4,6 @@ import { Image } from "antd";
 
 const Avatar = () => {
   const { currentUser } = useGlobalState();
-console.log(currentUser);
-
   return (
     <section className="flex flex-col items-center gap-5 pt-10 pb-5 bg-white border-b border-primary">
       <Image

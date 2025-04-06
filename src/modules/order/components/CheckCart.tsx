@@ -8,6 +8,7 @@ import { T_CART_RESPONSE, T_PRODUCT_RESPONSE } from "@/types";
 import { cartServices } from "@/services";
 import { useDebounce } from "@/hooks";
 import { useGlobalState } from "@/store";
+import { resourceUsage } from "process";
 
 type Props = {
   nextStep: () => void;
@@ -115,6 +116,16 @@ const CheckCart = (props: Props) => {
       });
   };
 
+  const rowSelection: TableProps<T_PRODUCT_RESPONSE>["rowSelection"] = {
+    onChange: (
+      selectedRowKeys: React.Key[],
+      selectedRows: T_PRODUCT_RESPONSE[]
+    ) => {
+      setselectedRows(selectedRows);
+      updateTotals(selectedRows, quantities);
+    },
+  };
+
   const columns: TableProps<T_PRODUCT_RESPONSE>["columns"] = [
     {
       title: "Code",
@@ -174,13 +185,20 @@ const CheckCart = (props: Props) => {
     {
       title: "Action",
       key: "action",
-      render: (_, { id }) => (
-        <Tooltip title={"Remove"}>
-          <button onClick={() => handleRemoveProductInCart(id)}>
-            <i className="text-red-400 bi bi-trash text-md"></i>
-          </button>
-        </Tooltip>
-      ),
+      render: (_, { id }) => {
+        const isSelected = selectedRows.some((item) => item.id === id);
+        if (isSelected) {
+          return null;
+        } else {
+          return (
+            <Tooltip title={"Remove"}>
+              <button onClick={() => handleRemoveProductInCart(id)}>
+                <i className="text-red-400 bi bi-trash text-md"></i>
+              </button>
+            </Tooltip>
+          );
+        }
+      },
       align: "center",
     },
   ];
@@ -213,16 +231,6 @@ const CheckCart = (props: Props) => {
     }
   }, [cart]);
 
-  const rowSelection: TableProps<T_PRODUCT_RESPONSE>["rowSelection"] = {
-    onChange: (
-      selectedRowKeys: React.Key[],
-      selectedRows: T_PRODUCT_RESPONSE[]
-    ) => {
-      setselectedRows(selectedRows);
-      updateTotals(selectedRows, quantities);
-    },
-  };
-
   return (
     <>
       {contextHolder}
@@ -244,7 +252,7 @@ const CheckCart = (props: Props) => {
             </div>
             <div className="flex justify-between">
               <p>Subtotal:</p>
-              <p className="font-semibold">${subtotal}</p>
+              <p className="font-semibold">{subtotal} VND</p>
             </div>
           </div>
           <button

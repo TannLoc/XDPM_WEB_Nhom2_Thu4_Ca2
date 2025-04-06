@@ -74,9 +74,9 @@ const ProductItem = (props: Props) => {
               <p className="h-5 text-sm line-through text-text-gray">
                 {product.price === product.salesPrice
                   ? ""
-                  : `$${product.price}`}
+                  : `${product.price} VND`}
               </p>
-              <p className="text-xl text-black">${product.salesPrice}</p>
+              <p className="text-xl text-black">{product.salesPrice} VND</p>
               {product.stock > 0 ? (
                 <p className="text-sm text-green">In stock</p>
               ) : (

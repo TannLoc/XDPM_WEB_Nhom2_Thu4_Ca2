@@ -28,7 +28,7 @@ const SearchItem = (props: Props) => {
       </div>
       <div>
         <p className="line-clamp-2">{product.name}</p>
-        <p className="text-lg font-semibold">${product.salesPrice}</p>
+        <p className="text-lg font-semibold">{product.salesPrice} VND</p>
       </div>
       {product.stock > 0 ? (
         <p className="absolute text-sm bottom-2 right-4 text-green">
