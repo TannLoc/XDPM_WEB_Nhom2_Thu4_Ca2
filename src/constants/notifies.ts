@@ -16,6 +16,7 @@ export enum ERROR {
   LOGIN = "Login failed",
   REGISTER = "Register failed",
   EMAIL = "Invalid email",
+  NAME = "Only letters are allowed in the username",
   PHONE_NUMBER = "Phone number must be 10 characters long",
   PASSWORD = "Password must be at least 6 characters",
   RE_ENTER_PASSWORD = "Invalid password re-entered",

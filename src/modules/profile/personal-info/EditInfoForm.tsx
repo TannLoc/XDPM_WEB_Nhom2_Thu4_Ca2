@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Button, DatePicker, Form, Input, message, UploadFile } from "antd";
 import React, { useState } from "react";
 
@@ -7,7 +7,7 @@ import { UploadImage } from "@/modules/layout";
 import { userServices } from "@/services";
 import { useGlobalState } from "@/store";
 import { T_USER_REQUEST } from "@/types";
-import { uploadImage } from "@/utils";
+import { isValidEmail, isValidUsername, uploadImage } from "@/utils";
 
 const EditInfoForm = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
@@ -15,14 +15,28 @@ const EditInfoForm = () => {
   const { getUser } = useGlobalState();
 
   const handleEditProfile = async (values: T_USER_REQUEST) => {
+    const username = values.fullName?.trim();
+    const email = values.email?.trim();
+
+    if (isValidUsername(username!)) {
+      message.error(ERROR.NAME);
+      return;
+    } else if (email && !isValidEmail(email)) {
+      message.error(ERROR.EMAIL);
+      return;
+    }
+
     const avatar = await uploadImage(fileList[0] || null);
+    
     const data = {
       avatarId: avatar ? avatar.id : null,
-      email: values?.email,
-      fullName: values?.fullName,
-      phoneNumber: values?.phoneNumber,
+      email: email,
+      fullName: username,
+      phoneNumber: values?.phoneNumber?.trim(),
       birthday: new Date(values.birthday!),
     };
+
+
     try {
       const res = await userServices.editUser(data);
       if (res) {

@@ -7,20 +7,13 @@ import { T_REGISTER_CUSTOMER } from "@/types";
 import { authCustomer } from "@/services/authServices";
 import { ERROR, GENERIC_PATH, INFO, SUCCESS, WARNING } from "@/constants";
 import { useGlobalState } from "@/store";
+import { isValidUsername, isValidEmail } from "@/utils";
 
 const Register = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<T_REGISTER_CUSTOMER>();
   const [messageApi, contextHolder] = message.useMessage();
   const { getUser } = useGlobalState();
-
-  const validateEmail = (email: string) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
 
   const handleSubmitRegister: SubmitHandler<T_REGISTER_CUSTOMER> = async (
     data
@@ -34,7 +27,10 @@ const Register = () => {
     ) {
       message.warning(WARNING.FIELD_IS_NOT_NULL);
       return;
-    } else if (!validateEmail(data.email!)) {
+    } else if (isValidUsername(data.fullName)) {
+      message.error(ERROR.NAME);
+      return;
+    } else if (!isValidEmail(data.email!)) {
       message.error(ERROR.EMAIL);
       return;
     } else if (data.phoneNumber!.length > 10 || data.phoneNumber!.length < 10) {
@@ -49,10 +45,10 @@ const Register = () => {
     }
 
     const newData = {
-      email: data.email,
-      fullName: data.fullName,
+      email: data.email.trim(),
+      fullName: data.fullName.trim(),
       password: data.password,
-      phoneNumber: data.phoneNumber,
+      phoneNumber: data.phoneNumber.trim(),
     };
 
     const res = await authCustomer.register(newData);

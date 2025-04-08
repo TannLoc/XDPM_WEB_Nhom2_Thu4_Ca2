@@ -84,7 +84,7 @@ const Checkout = (props: Props) => {
           ))}
           <div className="flex justify-between">
             <p>Total:</p>
-            <p className="font-semibold">${total}</p>
+            <p className="font-semibold">{total} VND</p>
           </div>
         </div>
         <div className="mt-5">
