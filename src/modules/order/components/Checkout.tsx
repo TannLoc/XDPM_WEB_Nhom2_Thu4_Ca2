@@ -27,10 +27,10 @@ const Checkout = (props: Props) => {
   };
 
   const handleConfirm = async () => {
-    if (process.env.NODE_ENV === "production" && paymentType === "VNPAY") {
-      alert("Không thể sử dụng VNPay trong môi trường production");
-      return;
-    }
+    // if (process.env.NODE_ENV === "production" && paymentType === "VNPAY") {
+    //   alert("Không thể sử dụng VNPay trong môi trường production");
+    //   return;
+    // }
     await form.validateFields();
     const text = form.getFieldValue("text");
     const city = form.getFieldValue("city");
